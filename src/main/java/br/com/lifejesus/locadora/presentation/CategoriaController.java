@@ -7,20 +7,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import br.com.lifejesus.locadora.domain.Categoria;
 import br.com.lifejesus.locadora.domain.CategoriaRepository;
-import br.com.lifejesus.locadora.domain.ProdutoRepository;
+
 
 @Controller
 @RequestMapping("/Categoria")
 public class CategoriaController {
-	   	@Autowired
-	    private ProdutoRepository produtoRepository;
+
 	    @Autowired
 	    private CategoriaRepository categoriaRepository;
 	    
 		@RequestMapping(value="/cadastra", method=RequestMethod.GET)
 		public String  preparaCadastroDeCategorias(Model model, Categoria categoria) {
 	        model.addAttribute("categoria",categoria);
-	        model.addAttribute("produtos",produtoRepository.buscaProdutos());
 	        return "/manutencao/categoria/cadastroCategoria";
 		}
 		

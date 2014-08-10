@@ -2,6 +2,7 @@ package br.com.lifejesus.locadora.domain;
 import com.google.common.collect.Lists;
 
 import javax.persistence.*;
+import java.math.BigInteger;
 import java.util.List;
 
 @Entity
@@ -9,67 +10,59 @@ import java.util.List;
 public class Categoria {
 	@Id
 	@GeneratedValue
-	private Integer id;
+	private BigInteger id;
 	private String nome;
 	@OneToMany(mappedBy = "categoria")
-	private List<Produto> produto= Lists.newArrayList() ;
+	private List<Filme> filmes = Lists.newArrayList() ;
 
 	public Categoria() {
 
 	}
 
-    public Integer getId() {
-        return id;
-    }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public void associaFilme(Filme filme){
+		filmes.add(filme);
+	}
 
-    public String getNome() {
-        return nome;
-    }
+	public String getNome() {
+		return nome;
+	}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public List<Filme> getFilmes() {
+		return filmes;
+	}
 
-    public List<Produto> getProduto() {
-        return produto;
-    }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Categoria)) return false;
 
-    public void setProduto(List<Produto> produto) {
-        this.produto = produto;
-    }
+		Categoria categoria = (Categoria) o;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Categoria)) return false;
+		if (!filmes.equals(categoria.filmes)) return false;
+		if (!id.equals(categoria.id)) return false;
+		if (!nome.equals(categoria.nome)) return false;
 
-        Categoria categoria = (Categoria) o;
+		return true;
+	}
 
-        if (!id.equals(categoria.id)) return false;
-        if (!nome.equals(categoria.nome)) return false;
-        if (!produto.equals(categoria.produto)) return false;
+	@Override
+	public int hashCode() {
+		int result = id.hashCode();
+		result = 31 * result + nome.hashCode();
+		result = 31 * result + filmes.hashCode();
+		return result;
+	}
 
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id.hashCode();
-        result = 31 * result + nome.hashCode();
-        result = 31 * result + produto.hashCode();
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        return "Categoria{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", produto=" + produto +
-                '}';
-    }
+	@Override
+	public String toString() {
+		return "Categoria{" +
+				"id=" + id +
+				", nome='" + nome + '\'' +
+				", filmes=" + filmes.toString() +
+				'}';
+	}
 }
