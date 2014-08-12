@@ -5,20 +5,20 @@ import javax.persistence.ManyToOne;
 import java.math.BigInteger;
 import java.time.LocalDate;
 
-/**
- * Created by Fernando_2 on 09/08/14.
- */
 public class Filme {
 	private BigInteger id;
 	private String titulo;
 	private LocalDate lancamento;
-	private Locacao locacao = new Locacao();
-
-	@ManyToOne
-	@JoinColumn(name="idCategoria")
+	private Locacao locacao;
 	private Categoria categoria = new Categoria();
 
 	public Filme(){
+	}
+
+	public void alugadoPor(Cliente cliente){
+		this.locacao = new Locacao();
+		locacao.setCliente(cliente);
+		locacao.setFilme(this);
 	}
 
 	public Locacao getLocacao() {
@@ -28,6 +28,7 @@ public class Filme {
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
+
 
 	public void setLancamento(LocalDate lancamento) {
 		this.lancamento = lancamento;

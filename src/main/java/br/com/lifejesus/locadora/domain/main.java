@@ -6,14 +6,47 @@ package br.com.lifejesus.locadora.domain;
 public class main {
 
 	public static void main(String[] args) {
-		Categoria categoria= new Categoria();
-		categoria.setNome("Ação");
-		Filme filme = new Filme();
-		filme.setTitulo("Top Gear");
-		filme.setCategoria(categoria);
-		Cliente fernando = new Cliente();
-		
-		fernando.locaFilme(filme);
-		fernando.filmesLocados();
+
+		Categoria categoriaA = new Categoria();
+		categoriaA.setNome("Ação");
+
+		Categoria categoriaB = new Categoria();
+		categoriaB.setNome("Comédia");
+
+		Categoria categoriaC = new Categoria();
+		categoriaC.setNome("Épico");
+
+		Filme filme1 = new Filme();
+		filme1.setTitulo("A virada");
+		Filme filme2 = new Filme();
+		filme2.setTitulo("300");
+		Filme filme3 = new Filme();
+		filme3.setTitulo("Professor Aloprado");
+
+		filme1.setCategoria(categoriaA);
+		filme2.setCategoria(categoriaC);
+		filme3.setCategoria(categoriaB);
+
+		categoriaA.associaFilme(filme1);
+		categoriaA.associaFilme(filme2);
+
+		categoriaB.associaFilme(filme3);
+		categoriaC.associaFilme(filme2);
+
+
+
+
+		Cliente cliente =  new Cliente();
+		cliente.setNome("Antonio");
+
+		cliente.locaFilmes(filme1);
+		cliente.locaFilmes(filme2);
+		cliente.locaFilmes(filme3);
+		filme1.alugadoPor(cliente);
+		filme2.alugadoPor(cliente);
+		filme3.alugadoPor(cliente);
+
+		cliente.filmesLocados();
+
 	}
 }

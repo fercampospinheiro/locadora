@@ -8,7 +8,7 @@ import java.time.LocalDate;
 public class Locacao {
 	private Filme filme;
 	private LocalDate data;
-
+	private Cliente cliente;
 	public void setFilme(Filme filme) {
 		this.filme = filme;
 	}
@@ -23,5 +23,13 @@ public class Locacao {
 
 	public LocalDate getData() {
 		return data;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 }

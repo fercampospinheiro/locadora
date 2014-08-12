@@ -5,18 +5,18 @@ import javax.persistence.*;
 import java.math.BigInteger;
 import java.util.List;
 
-@Entity
-@Table(name = "tb_categoria")
 public class Categoria {
-	@Id
-	@GeneratedValue
+
 	private BigInteger id;
 	private String nome;
-	@OneToMany(mappedBy = "categoria")
-	private List<Filme> filmes = Lists.newArrayList() ;
+	private List<Filme> filmes= Lists.newArrayList();
 
 	public Categoria() {
 
+	}
+
+	public void exibefilmesAssociados(){
+		this.filmes.forEach(filme -> System.out.println("Filme : " + filme.getTitulo()));
 	}
 
 	public void setNome(String nome) {
