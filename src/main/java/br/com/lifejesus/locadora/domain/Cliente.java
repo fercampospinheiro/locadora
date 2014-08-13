@@ -14,7 +14,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.math.BigInteger;
-import java.time.LocalDate;
 import java.util.List;
 
 public class Cliente {
@@ -31,7 +30,7 @@ public class Cliente {
 		this.locacoes.add(locacao);
 	}
 
-    public Endereco defineEndereco(Endereco endereco){
+    public Endereco defineEndereco(Endereco enderecoBuilder){
         return  this.endereco = endereco;
     }
 	public void criaUsuario(String email,String senha){
@@ -53,6 +52,10 @@ public class Cliente {
 		System.out.printf("usuario: %s email : %s",this.usuario.getEmail(),this.usuario.getSenha());
 	}
 
+    public void exibeEndereco(){
+        System.out.printf("Logradouro: %s numero : %s  bairro: % cidade: % estado: % ",
+                            this.endereco.,this.usuario.getSenha());
+    }
 	public String getNome() {
 		return nome;
 	}

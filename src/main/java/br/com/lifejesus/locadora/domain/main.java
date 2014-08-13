@@ -33,9 +33,6 @@ public class main {
 		categoriaB.associaFilme(filme3);
 		categoriaC.associaFilme(filme2);
 
-
-
-
 		Cliente cliente =  new Cliente();
 		cliente.setNome("Antonio");
         Endereco novoEndereco = new Endereco.Builder().logradouro("Rua orlando").numero(12).bairro("VilaAlpina").cidade("São Paulo").uf("SP").builder();
