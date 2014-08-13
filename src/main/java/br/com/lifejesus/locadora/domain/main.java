@@ -39,6 +39,8 @@ public class main {
 		Cliente cliente =  new Cliente();
 		cliente.setNome("Antonio");
 
+		cliente.criaUsuario("fercampospinheiro@gmail.com","00000");
+
 		cliente.locaFilmes(filme1);
 		cliente.locaFilmes(filme2);
 		cliente.locaFilmes(filme3);
@@ -46,7 +48,7 @@ public class main {
 		filme2.alugadoPor(cliente);
 		filme3.alugadoPor(cliente);
 
-		cliente.filmesLocados();
-
+		cliente.exibefilmesLocados();
+		cliente.exibeDadosDoUsuario();
 	}
 }
