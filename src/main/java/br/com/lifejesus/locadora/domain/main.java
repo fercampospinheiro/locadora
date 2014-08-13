@@ -38,8 +38,9 @@ public class main {
 
 		Cliente cliente =  new Cliente();
 		cliente.setNome("Antonio");
-
-		cliente.criaUsuario("fercampospinheiro@gmail.com","00000");
+        Endereco novoEndereco = new Endereco.Builder().logradouro("Rua orlando").numero(12).bairro("VilaAlpina").cidade("São Paulo").uf("SP").builder();
+        cliente.defineEndereco(novoEndereco);
+		cliente.criaUsuario("fercampospinheiro@gmail.com", "00000");
 
 		cliente.locaFilmes(filme1);
 		cliente.locaFilmes(filme2);

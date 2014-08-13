@@ -31,6 +31,9 @@ public class Cliente {
 		this.locacoes.add(locacao);
 	}
 
+    public Endereco defineEndereco(Endereco endereco){
+        return  this.endereco = endereco;
+    }
 	public void criaUsuario(String email,String senha){
 		this.usuario.setEmail(email);
 		this.usuario.setSenha(senha);
